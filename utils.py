@@ -3,6 +3,8 @@
 # Author: Sébastien Combéfis
 # Version: February 8, 2018
 
+from math import sqrt
+
 def fact(n):
 	"""Computes the factorial of a natural number.
 	
@@ -10,9 +12,28 @@ def fact(n):
 	Post: Returns the factorial of 'n'.
 	Throws: ValueError if n < 0
 	"""
-	pass
+
+	if n<0:
+		raise ValueError("C'est interdit de mettre un nombre négatif")
+	elif n==0:
+		return 1
+
+	return n * fact(n - 1)
 
 def roots(a, b, c):
+
+	delta = b**2 - 4*a*c
+	if delta < 0:
+		return ValueError
+
+	elif delta ==0:
+		x1 = ((-b + sqrt(delta)) / (2 * a))
+		return (x1)
+
+	else:
+		x1 =( (-b+sqrt(delta))/(2*a))
+		x2 = ((-b - sqrt(delta)) / (2 * a))
+		return (x1,x2)
 
 	"""Computes the roots of the ax^2 + bx + x = 0 polynomial.
 	
@@ -41,3 +62,4 @@ if __name__ == '__main__':
 	print(fact(5))
 	print(roots(1, 0, 1))
 	print(integrate('x ** 2 - 1', -1, 1))
+
